@@ -14,19 +14,16 @@ def index():
 @app.route("/lights-on")
 def lights_on():
     print("lights on")
-
+    ser.write(b"n")
     return redirect(url_for("index"))
 
 
 @app.route("/lights-off")
 def lights_off():
     print("lights off")
-
+    ser.write(b"f")
     return redirect(url_for("index"))
 
 
 if __name__ == '__main__':
-    while True:
-        print(ser.read())
-
     app.run()
