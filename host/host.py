@@ -1,9 +1,9 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 import serial
 
 app = Flask(__name__)
 
-ser = serial.Serial('COM3')
+#ser = serial.Serial('COM3')
 
 
 @app.route("/")
@@ -14,14 +14,23 @@ def index():
 @app.route("/lights-on")
 def lights_on():
     print("lights on")
-    ser.write(b"n")
+
+    light = request.args.get('light')
+    num = int(light) * 2
+
+    print(num)
+    # ser.write(num)
     return redirect(url_for("index"))
 
 
 @app.route("/lights-off")
 def lights_off():
     print("lights off")
-    ser.write(b"f")
+    light = request.args.get('light')
+    num = int(light) * 2 - 1
+
+    print(num)
+    # ser.write(num)
     return redirect(url_for("index"))
 
 
