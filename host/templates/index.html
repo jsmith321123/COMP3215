@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <title>Light Turning On-er</title>
     <div>
-        <h1>Light 1:</h1>
-        <a href="/lights-on?light=1">on</a>
-        <a href="/lights-off?light=1">off</a>
-    </div>
-    <div>
-        <h1>Light 2:</h1>
-        <a href="/lights-on?light=2">on</a>
-        <a href="/lights-off?light=2">off</a>
-    </div>
-    <div>
-        <h1>Light 3:</h1>
-        <a href="/lights-on?light=3">on</a>
-        <a href="/lights-off?light=3">off</a>
-    </div>
-    <div>
-        <h1>Light 4:</h1>
-        <a href="/lights-on?light=4">on</a>
-        <a href="/lights-off?light=4">off</a>
+        {% if not_created %}
+        <a href="/create-network">Create Network.</a>
+        {% endif %}
+
+        <a href="/refresh">Refresh</a>
+
+        {% for light in lights %}
+        <div>
+            Light: {{light.addr}}
+            <a href="/lights-on?light={{light.addr}}">On</a>
+            <a href="/lights-off?light={{light.addr}}">Off</a>
+            {% if not light.working %}
+            <a>ERROR: ACK timeout</a>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
 </head>
 <body>
