@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 TIMEOUT = 10
 
-ser = serial.Serial('COM3', baudrate=115200, timeout=TIMEOUT)
+ser = serial.Serial('COM4', baudrate=115200, timeout=TIMEOUT)
 
 lights = []
 
