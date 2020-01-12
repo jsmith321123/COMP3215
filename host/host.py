@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 import serial
 import time
+import json
 
 current_milli_time = lambda: int(round(time.time() * 1000))
 
@@ -8,7 +9,10 @@ app = Flask(__name__)
 
 TIMEOUT = 10
 
-ser = serial.Serial('COM4', baudrate=115200, timeout=TIMEOUT)
+with open("config.json") as file:
+    config = json.load(file)
+
+ser = serial.Serial(config["port"], baudrate=115200, timeout=TIMEOUT)
 
 lights = []
 
