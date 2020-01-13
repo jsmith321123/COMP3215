@@ -17,7 +17,7 @@ To control the board:
 ## Board
 Due to complications in generating a makefile which is not specific to only one machine, MCUXpresso must be downloaded in order to make the project and flash it to the board.
 1. Download MCUXpresso, https://mcuxpresso.nxp.com/en/welcome, and select the KW41z as the development board.
-1. With this downloaded, download the code from the git repository, https://github.com/jsmith321123/COMP3215.
+1. With this downloaded, clone the code from the git repository.
 1. Open the code under the folder board as a new project in MCUxpresso, and build the project.
 1. Plug the board into the computer, and select the blue debug option, and step through it. The code will then be flashed onto the board.
 1. Repeat for all boards.
